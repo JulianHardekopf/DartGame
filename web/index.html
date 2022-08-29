@@ -9,24 +9,28 @@
     <title>demo</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico">
-    <script defer src="main.dart.js"></script>
+    <script defer src='doodleClient.dart.js'></script>
 </head>
 
 <body>
-  
-  <div id="output"> </div>
-  <h1>Dart Chess</h1>
-  <table id="chess">
-      <tr><td></td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td></tr>
-      <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-  </table>
+
+<div id="menu">
+    <h1 id="title">Doodle Jump Dart</h1>
+    <button class="start">Start</button>
+    <button class="leaderboard">Leaderboard</button>
+    <p id="highscore"></p>
+    <h2 class="controls">Controls:</h2>
+    <img class="a-control" src="img/A-control.png" alt="move to left">
+    <img class="d-control" src="img/D-control.png" alt="move to right">
+    <p>Move to the left with "A-Key" and right with "D-Key"</p>
+</div>
+
+
+<div id="field">
+    <div class="player"></div>
+    <div class="fireball"></div>
+
+</div>
 
 </body>
 </html>

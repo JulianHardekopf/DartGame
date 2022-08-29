@@ -1,28 +1,142 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-#chess {
-    border-collapse: collapse;
+body{
+    background-color: bisque;
+}
+
+#menu {
+    /* Styling */
+    color: darkgoldenrod;
+    font-size: 2em;
+    text-align: center;
+    margin-left: 200px;
+    float: left;
+    display: inline;
+    width: 49%;
+    margin-bottom: 50px;
+
+
+}
+.start {
+    background-color: darkolivegreen;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+.leaderboard {
+    background-color: darkolivegreen;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+}
+.highscore {
+    /* Styling */
+    color: darkgoldenrod;
+    font-size: 2em;
+    margin: 15px 15px 0px 15px;
+    padding: 15px 20px;
+    text-align: center;
+    outline: none;
+    border: none;
+}
+.a-control {
+    width: 100px;
+    height: 100px;
+    margin-right: 50px;
+    text-align: center;
+}
+.d-control {
+    width: 100px;
+    height: 100px;
+
+}
+
+#field {
+    /* Groesse */
+    width: 500px;
+    height: 700px;
+
+    background-image: url("img/doodlebackground.png");
     margin-left: auto;
-    margin-right: auto;
-}
+    margin-right: 100px;
+    margin-top: 50px;
+    float: left;
+    display: inline;
 
-#chess td {
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
-    color: black;
-    background: lightgrey;
+
+    /* Aussehen */
+    border: 1px solid white;
+
+
+    /* Positionierung */
+    position: relative;
+
+
+    /* Styling */
+    padding: 2em;
+    color: red;
+    font-size: 2em;
     text-align: center;
-    font-weight: bold;
 }
 
-#chess tr:nth-child(odd) td:nth-child(odd),
-#chess tr:nth-child(even) td:nth-child(even) {
-    background: cadetblue; /* Farbgebung Schachbrett */
+
+.player {
+
+    border-radius: 80px;
+    background-image: url("img/doodle.png");
+    position: absolute;
+
+
 }
 
-#chess tr:first-child td, #chess tr td:first-child {
-    background: whitesmoke !important;  /* Farbgebung Schachbrett */
-    text-align: center;
-    font-size: 30px;
+.platform {
+    width: 68px;
+    height: 14px;
+
+    position: absolute;
+    top: auto;
+    left: auto;
+
+    background-image: url("img/platform.png");
+}
+
+.fireball {
+    width: 80px;
+    height: 132px;
+    background-image: url("img/newFireballtransparent.png");
+    position: absolute;
+    top: auto;
+    left: auto;
+}
+
+
+/* Some basic styles */
+body {
+    font-family: Roboto;
+    text-align: left;
+}
+
+/* Dart Pong */
+h1 {
+    font-size: 2.5em;
+    text-align: left;
+    font-weight: bolder;
+    margin: 1.5em;
+    margin-bottom: 0.5em;
 }
