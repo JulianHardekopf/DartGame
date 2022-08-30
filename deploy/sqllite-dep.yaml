@@ -23,7 +23,7 @@ spec:
               cpu: 50m
               memory: 100M
           ports:
-            - containerPort: 6379
+            - containerPort: 5000
           volumeMounts:
             - mountPath: "/data"
               name: sqllite-volume
