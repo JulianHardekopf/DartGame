@@ -17,7 +17,7 @@ spec:
         - name: gitlab-registry-credentials
       containers:
         - name: sqllite
-          image: {{ CI_REGISTRY_IMAGE }}/backendsql:latest
+          image: /backendsql:latest
           resources:
             limits:
               cpu: 50m
