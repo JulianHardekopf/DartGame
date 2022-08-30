@@ -42,6 +42,7 @@ container:
 sqllite:
   stage: deploy
   script:
+    - mo deploy/sqllite-dep.yaml | kubectl delete -f - || true
     - mo deploy/sqllite-dep.yaml | kubectl apply -f -
     - mo deploy/sqllite-svc.yaml | kubectl apply -f -
 
