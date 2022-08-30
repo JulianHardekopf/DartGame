@@ -25,7 +25,7 @@ spec:
           ports:
             - containerPort: 5000
           volumeMounts:
-            - mountPath: "backend/"
+            - mountPath: "/app"
               name: sqllite-volume
       volumes:
         - name: sqllite-volume
