@@ -39,7 +39,7 @@ container:
     - img build -t $CI_REGISTRY_IMAGE/backendsql:latest .
     - img push $CI_REGISTRY_IMAGE/backendsql:latest
 
-redis:
+sqllite:
   stage: deploy
   script:
     - kubectl apply -f deploy/sqllite-dep.yaml
