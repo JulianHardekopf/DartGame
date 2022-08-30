@@ -1,26 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ CI_COMMIT_REF_NAME }}-webapp
+  name: prime-deployment
+  labels:
+    app: prime
 spec:
+  replicas: 5
   selector:
     matchLabels:
-      app: {{ CI_COMMIT_REF_NAME }}-webapp
+      app: prime
   template:
     metadata:
       labels:
-        app: {{ CI_COMMIT_REF_NAME }}-webapp
+        app: prime
     spec:
       imagePullSecrets:
         - name: gitlab-registry-credentials
       containers:
-        - name: app
-          image: {{ CI_REGISTRY_IMAGE }}/sqllite:latest
+        - name: prime
+          image: "{{ CI_REGISTRY_IMAGE }}/sqllite:latest"
           ports:
-            - containerPort: 5000
-          livenessProbe:
-            httpGet:
-              path: /index.html
-              port: 5000
-            periodSeconds: 60
-            failureThreshold: 1
+            - containerPort: 80
+          env:
+            - name: REDIS
+              value: "redis-service"
+          resources:
+            limits:
+              cpu: "50m"
+              memory: "128Mi"
+
