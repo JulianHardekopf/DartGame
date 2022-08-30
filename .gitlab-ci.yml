@@ -37,8 +37,8 @@ container:
     - img push $CI_REGISTRY_IMAGE/webapp-$CI_COMMIT_REF_NAME:latest
     - cd backend/
     - img login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - img build -t $CI_REGISTRY_IMAGE/backendsql:latest .
-    - img push $CI_REGISTRY_IMAGE/backendsql:latest
+    - img build -t backendsql:latest .
+    - img push backendsql:latest
 
 sqllite:
   stage: deploy

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         -
-          image: "{{ CI_REGISTRY_IMAGE }}/sqllite:latest"
+          image: sqllite:latest
           name: sqllite
           ports:
             -
