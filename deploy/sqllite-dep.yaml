@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         -
-          image: "git.mylab.th-luebeck.de:4181/webtech/ss2022/julian-hardekopf/backendsql"
+          image: {{ CI_REGISTRY_IMAGE }}/backendsql:latest
           name: sqllite
           ports:
             -
