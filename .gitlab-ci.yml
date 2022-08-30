@@ -23,12 +23,28 @@ registry-cred:
               --docker-username=image-registry \ 
               --docker-password=$CI_REGISTRY_TOKEN"
 
+volumes:
+  stage: build
+  script:
+    - kubectl apply -f deploy/sqllite-pvc.yaml
+
+
 container:
   stage: build
   script:
     - img login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - img build -t $CI_REGISTRY_IMAGE/webapp-$CI_COMMIT_REF_NAME:latest .
     - img push $CI_REGISTRY_IMAGE/webapp-$CI_COMMIT_REF_NAME:latest
+    - cd backend/
+    - docker build -t $CI_REGISTRY_IMAGE/backendsql:latest .
+    - docker push $CI_REGISTRY_IMAGE/backendsql:latest
+
+redis:
+  stage: deploy
+  script:
+    - kubectl apply -f deploy/sqllite-dep.yaml
+    - kubectl apply -f deploy/sqllite-svc.yaml
+
 
 webapp:
   stage: deploy

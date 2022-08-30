@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqllite
+  labels:
+    app: sqllite
+spec:
+  selector:
+    matchLabels:
+      app: sqllite
+  template:
+    metadata:
+      labels:
+        app: sqllite
+    spec:
+      containers:
+        - name: sqllite
+          image: {{$CI_REGISTRY_IMAGE}}/backendsql:latest
+          resources:
+            limits:
+              cpu: 50m
+              memory: 100M
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - mountPath: "/data"
+              name: sqllite-volume
+      volumes:
+        - name: sqllite-volume
+          persistentVolumeClaim:
+            claimName: sqllite-pvc
+
