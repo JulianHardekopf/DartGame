@@ -1,9 +1,10 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqllite
   labels:
     app: sqllite
+  name: sqllite
 spec:
   selector:
     matchLabels:
@@ -13,22 +14,26 @@ spec:
       labels:
         app: sqllite
     spec:
-      imagePullSecrets:
-      - name: gitlab-registry-credentials
       containers:
-        - name: app
-          image: {{$CI_REGISTRY_IMAGE}}/backendsql:latest
+        -
+          image: "{{ CI_REGISTRY_IMAGE }}/sqllite:latest"
+          name: sqllite
+          ports:
+            -
+              containerPort: 6379
           resources:
             limits:
               cpu: 50m
               memory: 100M
-          ports:
-            - containerPort: 6379
           volumeMounts:
-            - mountPath: "/data"
+            -
+              mountPath: /data
               name: sqllite-volume
+      imagePullSecrets:
+        -
+          name: gitlab-registry-credentials
       volumes:
-        - name: sqllite-volume
+        -
+          name: sqllite-volume
           persistentVolumeClaim:
             claimName: sqllite-pvc
-
