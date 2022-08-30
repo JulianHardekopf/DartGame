@@ -17,7 +17,7 @@ spec:
         - name: gitlab-registry-credentials
       containers:
         - name: sqllite
-          image: "git.mylab.th-luebeck.de:4181/webtech/ss2022/julian-hardekopf/sqllite:latest"
+          image: "git.mylab.th-luebeck.de:4181/webtech/ss2022/julian-hardekopf/backendsql:latest"
           resources:
             limits:
               cpu: 50m
