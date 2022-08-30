@@ -1,31 +1,39 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prime-deployment
   labels:
-    app: prime
+    app: sqllite
+  name: sqllite
 spec:
-  replicas: 5
   selector:
     matchLabels:
-      app: prime
+      app: sqllite
   template:
     metadata:
       labels:
-        app: prime
+        app: sqllite
     spec:
-      imagePullSecrets:
-        - name: gitlab-registry-credentials
       containers:
-        - name: prime
-          image: "{{ CI_REGISTRY_IMAGE }}/sqllite:latest"
+        -
+          image: "git.mylab.th-luebeck.de:4181/webtech/ss2022/julian-hardekopf/backendsql"
+          name: sqllite
           ports:
-            - containerPort: 80
-          env:
-            - name: REDIS
-              value: "redis-service"
+            -
+              containerPort: 6379
           resources:
             limits:
-              cpu: "50m"
-              memory: "128Mi"
-
+              cpu: 50m
+              memory: 100M
+          volumeMounts:
+            -
+              mountPath: /data
+              name: sqllite-volume
+      imagePullSecrets:
+        -
+          name: gitlab-registry-credentials
+      volumes:
+        -
+          name: sqllite-volume
+          persistentVolumeClaim:
+            claimName: sqllite-pvc
