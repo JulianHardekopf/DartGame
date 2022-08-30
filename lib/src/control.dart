@@ -17,16 +17,44 @@ class DoodleGameController {
     view.updateHighscore();
     model.createPlatforms();
     view.initPlatforms();
+    resttoDart();
 
     view.startButton.onClick.listen((_) {
       gamestart = true;
       if(gamestart) startGame(model, view);
 
       if(model.gameOver()) {
+        //dartToRest();
         gamestart = true;
         window.location.reload();
       }
     });
+  }
+  Future<void> dartToRest() async {
+    var highscore = {
+      "score" : score
+    };
+
+    //await for (var contents in )
+
+    if(score > record) {
+      record = score;
+    }
+    var response = await http.post(
+      Uri.parse('http://localhost:5000/leaderboard'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(highscore),
+    );
+    print(response.body);
+  }
+
+  Future<void> resttoDart() async {
+    var response = await http.get(
+      Uri.parse('http://localhost:5000/leaderboard')
+    );
+    print(response.body);
   }
 
   void startGame(Field model, View view) {
@@ -39,9 +67,15 @@ class DoodleGameController {
         view.updatePlayer();
         view.updateHighscore();
 
-      if (model.gameOver()) timer.cancel();
+      if (model.gameOver()) {
+        dartToRest();
+        view.updateHighscore();
+        print("hallo");
+        timer.cancel();
+      }
     });
   }
 
 }
+
 

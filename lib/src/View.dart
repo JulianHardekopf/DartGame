@@ -7,11 +7,14 @@ class View {
   final player = querySelector("#field .player");
   final fireball = querySelector("#field .fireball");
   final startButton = querySelector("#menu .start");
-  final highScore = querySelector("#highscore");
+  final currentScore = querySelector("#currentScore");
+  final highscore = querySelector("#highscore");
   View(this.model);
 
   void updateHighscore() {
-    highScore.innerHtml = 'Current Score: ${score.toString()}';
+    currentScore.innerHtml = 'Current Score: ${score.toString()}';
+    highscore.innerHtml = 'Highscore: ${record.toString()}';
+
   }
 
   void updatePlayer() {

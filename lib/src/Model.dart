@@ -3,6 +3,7 @@ part of doodleJump;
 int platformsCount = 6;
 bool gameHasStarted = false;
 int score = 0;
+int record = 0;
 
 class Fireball {
   double x, y;
