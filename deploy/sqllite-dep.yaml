@@ -14,13 +14,13 @@ spec:
       labels:
         app: sqllite
     spec:
-      imagePullSecrets:
-        - name: gitlab-registry-credentials
       containers:
-        - name: sqllite
-          image: { { CI_REGISTRY_IMAGE } }/backendsql:latest
+        -
+          image: "{ { CI_REGISTRY_IMAGE } }/backendsql:latest"
+          name: sqllite
           ports:
-            -containerPort: 6379
+            ? "-containerPort"
+              : 6379
           resources:
             limits:
               cpu: 50m
@@ -29,6 +29,9 @@ spec:
             -
               mountPath: /data
               name: sqllite-volume
+      imagePullSecrets:
+        -
+          name: gitlab-registry-credentials
       volumes:
         -
           name: sqllite-volume
