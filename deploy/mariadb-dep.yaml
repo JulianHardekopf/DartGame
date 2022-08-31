@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
         - name: mariadb
-          image: mariadb/server:10.4
-          command: ["mariadb", "--host", "127.0.0.1", "-P", "3306", "--user", "root", "-p", "Password123!"]
+          image: mariadb:latest
           ports:
             - containerPort: 3306
               name: db-port
@@ -26,8 +25,6 @@ spec:
               value: demo
             - name: MYSQL_PASSWORD
               value: Password123!
-            - name: MYSQL_RANDOM_ROOT_PASSWORD
-              value: "yes"
 
           #env:
             #- name: MARIADB_ROOT_PASSWORD
