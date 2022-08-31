@@ -46,6 +46,11 @@ sqllite:
     - mo deploy/sqllite-dep.yaml | kubectl apply -f -
     - mo deploy/sqllite-svc.yaml | kubectl apply -f -
 
+mariadb:
+  stage: deploy
+  script:
+    - mo deploy/mariadb-dep.yaml | kubectl apply -f -
+
 webapp:
   stage: deploy
   script:

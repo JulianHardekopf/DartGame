@@ -1,11 +1,17 @@
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from sqlalchemy.sql import func
+import mysql.connector
+from sqlalchemy import create_engine
 
-
+basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
 
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@localhost:3306/demo'
+
+db = SQLAlchemy(app)
 
 
 class Leaderboard(db.Model) :
