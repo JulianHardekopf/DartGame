@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@localhost:3306/demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@127.0.0.1:3306/demo'
 db = SQLAlchemy(app)
 
 
