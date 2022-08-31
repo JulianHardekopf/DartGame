@@ -17,6 +17,9 @@ spec:
       containers:
         - name: mariadb
           image: mariadb
+          imagePullPolicy: Always
+          command:
+            - instances=root:Password123!:demo=tcp:0.0.0.0:3306
           ports:
             - containerPort: 3306
               name: db-port
