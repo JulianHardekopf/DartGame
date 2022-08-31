@@ -25,3 +25,5 @@ spec:
               value: "Password123!"
             - name: MYSQL_USER
               value: "root"
+            - name: MARIADB_DATABASE
+              value: demo
