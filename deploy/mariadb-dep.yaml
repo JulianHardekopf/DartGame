@@ -18,7 +18,6 @@ spec:
         - name: mariadb
           image: mariadb
           imagePullPolicy: Always
-          command: ["--bind", "0.0.0.0", "--loglevel", "verbose"]
           ports:
             - containerPort: 3306
               name: db-port
