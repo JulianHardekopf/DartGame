@@ -17,7 +17,7 @@ spec:
       containers:
         - name: mariadb
           image: mariadb/server:10.4
-          command: ["mariadb", "--host", "127.0.0.1", "-P", "3306", "--user", "root", "-pPassword123!"]
+          command: ["mariadb", "--host", "127.0.0.1", "-P", "3306", "--user", "root", "-p", "Password123!"]
           ports:
             - containerPort: 3306
               name: db-port
