@@ -25,7 +25,7 @@ spec:
           ports:
             - containerPort: 5000
           volumeMounts:
-          - name: sqlite-volume
+          - name: sqllite-volume
             mountPath: /data
       volumes:
         - name: sqllite-volume
