@@ -39,6 +39,12 @@ container:
     - img build -t $CI_REGISTRY_IMAGE/backendsql:latest .
     - img push $CI_REGISTRY_IMAGE/backendsql:latest
 
+mariadb:
+  stage: deploy
+  script:
+    - mo deploy/mariadb-dep.yaml | kubectl apply -f -
+
+
 sqllite:
   stage: deploy
   script:
@@ -46,10 +52,6 @@ sqllite:
     - mo deploy/sqllite-dep.yaml | kubectl apply -f -
     - mo deploy/sqllite-svc.yaml | kubectl apply -f -
 
-mariadb:
-  stage: deploy
-  script:
-    - mo deploy/mariadb-dep.yaml | kubectl apply -f -
 
 webapp:
   stage: deploy
