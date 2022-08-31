@@ -27,6 +27,7 @@ volumes:
   stage: build
   script:
     - kubectl apply -f deploy/sqllite-pvc.yaml
+    - kubectl apply -f deploy/mariadb-pvc.yaml
 
 
 container:
@@ -42,7 +43,7 @@ container:
 mariadb:
   stage: deploy
   script:
-    - mo deploy/sqllite-dep.yaml | kubectl delete -f - || true
+    - mo deploy/mariadb-dep.yaml | kubectl delete -f - || true
     - mo deploy/mariadb-dep.yaml | kubectl apply -f -
     - mo deploy/mariadb-svc.yaml | kubectl apply -f -
 

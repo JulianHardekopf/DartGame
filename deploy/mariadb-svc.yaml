@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mariadb
+  labels:
+    app: mysql
+  name: mysql
 spec:
-  selector:
-    name: mariadb
   ports:
-    - protocol: TCP
-      port: 3306
+    - port: 3306
       targetPort: 3306
+  selector:
+    app: mysql
   type: ClusterIP
