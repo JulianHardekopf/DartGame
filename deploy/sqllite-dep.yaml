@@ -17,7 +17,7 @@ spec:
         - name: gitlab-registry-credentials
       containers:
         - name: sqllite
-          image: {{ CI_REGISTRY_IMAGE }}/backendsql:latest
+          image: { { CI_REGISTRY_IMAGE } }/backendsql:latest
           resources:
             limits:
               cpu: 50m
@@ -25,8 +25,8 @@ spec:
           ports:
             - containerPort: 5000
           volumeMounts:
-          - name: sqllite-volume
-            mountPath: /data
+            - mountPath: "/data"
+              name: sqllite-volume
       volumes:
         - name: sqllite-volume
           persistentVolumeClaim:
