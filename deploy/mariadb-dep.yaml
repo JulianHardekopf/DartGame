@@ -21,9 +21,9 @@ spec:
             - containerPort: 3306
               name: db-port
           env:
-            - name: MYSQL_ROOT_PASSWORD
+            - name: MARIADB_ROOT_PASSWORD
               value: "Password123!"
-            - name: MYSQL_USER
+            - name: MARIADB_USER
               value: "root"
             - name: MARIADB_DATABASE
               value: demo
