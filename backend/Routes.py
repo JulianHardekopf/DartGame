@@ -3,14 +3,15 @@ from flask import jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from Models import Leaderboard
 from flask_cors import CORS
-
+from db.py import highscore
 
 
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/database.db'
 db = SQLAlchemy(app)
+
 
 
 @app.route('/leaderboard', methods=['POST','GET'])
