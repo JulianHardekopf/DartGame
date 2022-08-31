@@ -20,7 +20,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3306
-              name: db-port
           env:
             - name: MARIADB_ROOT_PASSWORD
               value: "Password123!"
