@@ -25,8 +25,8 @@ spec:
           ports:
             - containerPort: 5000
           volumeMounts:
-            - mountPath: "/data"
-              name: sqllite-volume
+          - name: sqllite-volume
+            mountPath: "/data"
       volumes:
         - name: sqllite-volume
           persistentVolumeClaim:
