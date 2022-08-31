@@ -25,3 +25,9 @@ spec:
               value: "Password123!"
             - name: MARIADB_DATABASE
               value: "demo"
+            - name: MARIADB_USER
+              value: "root"
+            - name: MARIADB_PASSWORD
+              value: "Password123!"
+            - name: MARIADB_INITDB_SKIP_TZINFO
+              value: "1"
