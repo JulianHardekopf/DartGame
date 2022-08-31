@@ -8,7 +8,7 @@ from flask import Flask
 app = Flask(__name__)
 #engine = create_engine("mysql+pymysql://root:Password123!@localhost:3306/database")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@10.152.183.153:3306/demo'
 
 db = SQLAlchemy(app)
 
