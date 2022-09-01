@@ -20,15 +20,15 @@ spec:
           ports:
             - containerPort: 3306
               name: db-port
-          volumeMounts:
-            - mountPath: "/var/lib/mysql"
-              name: mysql-volume
-          volumes:
-          - name: mysql-volume
-            persistentVolumeClaim:
-              claimName: db-data
           env:
             - name: MARIADB_ROOT_PASSWORD
               value: "Password123!"
             - name: MARIADB_DATABASE
               value: "demo"
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              name: mysql-volume
+          volumes:
+            - name: mysql-volume
+              persistentVolumeClaim:
+                claimName: db-data
