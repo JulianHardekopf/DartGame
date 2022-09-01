@@ -27,8 +27,8 @@ spec:
               value: "demo"
           volumeMounts:
             - mountPath: "/var/lib/mysql"
-              name: mysql-volume
+              name: db-data
           volumes:
-            - name: mysql-volume
+            - name: db-data
               persistentVolumeClaim:
                 claimName: db-data
