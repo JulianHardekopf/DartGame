@@ -3,7 +3,6 @@ from flask import Flask
 from flask import jsonify, request
 from flask_cors import CORS
 from sqlalchemy import func
-
 app = Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'

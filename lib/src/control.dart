@@ -46,7 +46,7 @@ class DoodleGameController {
 
   Future<void> resttoDart() async {
     var response = await http.get(
-      Uri.parse('http://localhost:5000/leaderboard')
+      Uri.parse('http://localhost:5000/leaderboard/max')
     );
     print("highestVal: " + response.body);
 
