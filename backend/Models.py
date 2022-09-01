@@ -8,6 +8,7 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'
 db = SQLAlchemy(app)
 
+
 class Leaderboard(db.Model) :
     id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     score = db.Column(db.Integer)
@@ -27,13 +28,18 @@ def highscore():
             'score': request.json.get('score')
         }
         highscore = Leaderboard(score=args['score'])
-        db.session.add(highscore)
-        db.session.commit()
-        return {'message': 'successfully created'},201
+        if (highscore > db.session.query(func.max(Leaderboard.score)).first()) :
+            db.session.add(highscore)
+            db.session.commit()
+            return {'message': 'successfully created'},201
     else:
-        data = db.session.query(Leaderboard).all()
-        return jsonify(({'Highscore': [m.to_json() for m in data]}))
+        data = db.session.query(func.max(Leaderboard.score)).first()
+        return jsonify(data)
 
+@app.route('/leaderboard/max', methods=['GET'])
+def max():
+    data = db.session.query(func.max(Leaderboard.score)).first()
+    return jsonify(data)
 
 
 if __name__ == "__main__":

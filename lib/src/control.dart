@@ -24,7 +24,6 @@ class DoodleGameController {
       if(gamestart) startGame(model, view);
 
       if(model.gameOver()) {
-        //dartToRest();
         gamestart = true;
         window.location.reload();
       }
@@ -35,11 +34,6 @@ class DoodleGameController {
       "score" : score
     };
 
-    //await for (var contents in )
-
-    if(score > record) {
-      record = score;
-    }
     var response = await http.post(
       Uri.parse('http://localhost:5000/leaderboard'),
       headers: {
@@ -54,7 +48,7 @@ class DoodleGameController {
     var response = await http.get(
       Uri.parse('http://localhost:5000/leaderboard')
     );
-    print(response.body);
+    print("highestVal: " + response.body);
 
   }
 
@@ -70,8 +64,8 @@ class DoodleGameController {
 
       if (model.gameOver()) {
         dartToRest();
+        resttoDart();
         view.updateHighscore();
-        print("hallo");
         timer.cancel();
       }
     });
