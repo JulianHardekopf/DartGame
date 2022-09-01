@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqllite
+  name: rest
   labels:
-    app: sqllite
+    app: rest
 spec:
   selector:
     matchLabels:
-      app: sqllite
+      app: rest
   template:
     metadata:
       labels:
-        app: sqllite
+        app: rest
     spec:
       imagePullSecrets:
         - name: gitlab-registry-credentials
       containers:
-        - name: sqllite
-          image: {{ CI_REGISTRY_IMAGE }}/backendsql:latest
+        - name: rest
+          image: {{ CI_REGISTRY_IMAGE }}/rest:latest
           resources:
             limits:
               cpu: 50m

@@ -1,18 +1,12 @@
-#import os
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
-#from sqlalchemy.sql import func
-#from sqlalchemy import create_engine
 from flask import jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
-#engine = create_engine("mysql+pymysql://root:Password123!@localhost:3306/database")
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'
-
 db = SQLAlchemy(app)
-
 
 class Leaderboard(db.Model) :
     id = db.Column(db.Integer, primary_key=True,autoincrement=True)

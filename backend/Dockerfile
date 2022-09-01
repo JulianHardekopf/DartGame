@@ -4,8 +4,6 @@ WORKDIR /app
 ADD requirements.txt ./
 RUN pip install -r requirements.txt
 CMD python /app/Models.py
-#CMD python /app/Routes.py
 
 EXPOSE 5000
 ADD Models.py ./
-#ADD Routes.py ./
