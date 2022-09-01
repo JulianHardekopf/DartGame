@@ -13,7 +13,7 @@ class View {
 
   void updateHighscore() {
     currentScore.innerHtml = 'Current Score: ${score.toString()}';
-    highscore.innerHtml = 'Highscore: ${record.toString()}';
+    highscore.innerHtml = 'Highscore: ${record}';
 
   }
 

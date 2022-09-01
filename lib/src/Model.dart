@@ -1,9 +1,19 @@
 part of doodleJump;
 
+// Parameter to define the amount of platforms to be spawned
 int platformsCount = 6;
+
+// To control if game rules should be applied
 bool gameHasStarted = false;
+// score for the database
 int score = 0;
-int record = 0;
+// String for the current record
+String record = "0";
+
+/* Fireball class which is spawned randomly on the horizontal axis
+ has own collision with the player and gets spawned by the start of the game
+falls at the speed of dy vector
+*/
 
 class Fireball {
   double x, y;
@@ -33,7 +43,11 @@ class Fireball {
     }
   }
 }
-
+/*
+Field defines the area where the game takes place
+Movement of the platforms is applied and is
+connectedd to the player, fireball and platforms
+*/
 class Field {
   double width;
   double height;
@@ -95,7 +109,11 @@ class Field {
 
 }
 
-
+/*
+Platform class defines the platforms.
+checks for collision with the player
+create and deletes the platforms.
+ */
 class Platform{
   DivElement divElement;
   Field field;
@@ -129,7 +147,12 @@ class Platform{
 
 }
 
-
+/*
+In the Player class checks whether hes dead by a collision
+with the ground or with a fireball.
+Moves the Player according to the movement status Key-A and Key-D
+Player jumps are calculated in the player class aswell.
+ */
 class Player {
   double x;
   double y;

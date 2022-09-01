@@ -28,13 +28,12 @@ def highscore():
             'score': request.json.get('score')
         }
         highscore = Leaderboard(score=args['score'])
-        if (highscore > db.session.query(func.max(Leaderboard.score)).first()) :
-            db.session.add(highscore)
-            db.session.commit()
-            return {'message': 'successfully created'},201
+        db.session.add(highscore)
+        db.session.commit()
+        return {'message': 'successfully created'},201
     else:
         data = db.session.query(func.max(Leaderboard.score)).first()
-        return jsonify(data)
+        return jsonify(data[0])
 
 @app.route('/leaderboard/max', methods=['GET'])
 def max():

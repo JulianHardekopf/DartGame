@@ -14,6 +14,7 @@ class DoodleGameController {
     double height = (querySelector("#field")?.getBoundingClientRect().height ?? 0.0) as double;
     Field model = Field(width, height);
     View view = View(model);
+    dartToRest();
     view.updateHighscore();
     model.createPlatforms();
     view.initPlatforms();
@@ -41,14 +42,14 @@ class DoodleGameController {
       },
       body: jsonEncode(highscore),
     );
-    print(response.body);
+    //print(response.body);
   }
 
   Future<void> resttoDart() async {
     var response = await http.get(
-      Uri.parse('http://localhost:5000/leaderboard/max')
+      Uri.parse('http://localhost:5000/leaderboard')
     );
-    print("highestVal: " + response.body);
+    record = response.body;
 
   }
 
