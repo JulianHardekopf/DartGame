@@ -27,7 +27,7 @@ volumes:
   stage: build
   script:
     - kubectl apply -f deploy/sqllite-pvc.yaml
-    #- kubectl apply -f deploy/mariadb-pvc.yaml
+    - kubectl apply -f deploy/mariadb-pvc.yaml
 
 
 container:

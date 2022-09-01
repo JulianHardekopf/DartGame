@@ -55,6 +55,7 @@ class DoodleGameController {
       Uri.parse('http://localhost:5000/leaderboard')
     );
     print(response.body);
+
   }
 
   void startGame(Field model, View view) {
