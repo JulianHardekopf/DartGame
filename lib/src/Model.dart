@@ -14,35 +14,6 @@ String record = "0";
  has own collision with the player and gets spawned by the start of the game
 falls at the speed of dy vector
 */
-
-class Fireball {
-  double x, y;
-  double dy = -4;
-  double width = 80;
-  double height = 120;
-  Field field;
-
-  Fireball(this.field) {
-    x =  Random().nextDouble() * (field.width - width);
-    y = 0 - height;
-
-  }
-
-  void fall() {
-    y -= dy;
-    if(y + height > field.height) {
-      y = 0;
-    }
-  }
-
-  bool collisionFireball(Player p) {
-    if(p.x + p.diameter / 2 > x  && p.x + p.diameter / 2  < x +width && (p.y - y).abs() < p.diameter) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
 /*
 Field defines the area where the game takes place
 Movement of the platforms is applied and is
@@ -108,6 +79,35 @@ class Field {
   }
 
 }
+class Fireball {
+  double x, y;
+  double dy = -4;
+  double width = 80;
+  double height = 120;
+  Field field;
+
+  Fireball(this.field) {
+    x =  Random().nextDouble() * (field.width - width);
+    y = 0 - height;
+
+  }
+
+  void fall() {
+    y -= dy;
+    if(y + height > field.height) {
+      y = 0;
+    }
+  }
+
+  bool collisionFireball(Player p) {
+    if(p.x + p.diameter / 2 > x  && p.x + p.diameter / 2  < x +width && (p.y - y).abs() < p.diameter) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
 
 /*
 Platform class defines the platforms.
